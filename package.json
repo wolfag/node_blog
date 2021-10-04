@@ -10,7 +10,10 @@
   },
   "scripts": {
     "start": "nodemon --inspect src/index.ts",
-    "css": "node-sass --watch src/resources/scss/ --output src/public/css/"
+    "css": "node-sass --watch src/resources/scss/ --output src/public/css/",
+    "beautiful": "lint-staged",
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
@@ -18,9 +21,12 @@
     "@types/express-handlebars": "^5.3.1",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.10.2",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.2.0",
     "morgan": "^1.10.0",
     "node-sass": "^6.0.1",
     "nodemon": "^2.0.13",
+    "prettier": "^2.4.1",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }

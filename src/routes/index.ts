@@ -1,4 +1,3 @@
-
 import { Express } from 'express';
 import newsRouter from './news';
 import siteRouter from './site';
