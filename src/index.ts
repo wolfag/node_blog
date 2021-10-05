@@ -3,14 +3,20 @@ import express from 'express';
 import handlebars from 'express-handlebars';
 import morgan from 'morgan';
 import path from 'path';
+import { connect } from './config/db';
 import router from './routes';
 
 dotenv.config();
 
-if (!process.env.PORT) {
+const PORT: number = parseInt(process.env.PORT as string, 10);
+const DB_USER: string = process.env.DB_USER || '';
+const DB_PASS: string = process.env.DB_PASS || '';
+
+if (!PORT || !DB_PASS || !DB_USER) {
   process.exit(1);
 }
-const PORT: number = parseInt(process.env.PORT as string, 10);
+
+connect({ user: DB_USER, password: DB_PASS });
 
 const app = express();
 

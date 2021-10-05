@@ -4,7 +4,7 @@ import SiteController from '../app/controllers/SiteController';
 const controller = new SiteController();
 const router = express.Router();
 
-router.use('/search', controller.search);
-router.use('/', controller.index);
+router.get('/search', controller.search);
+router.get('/', controller.index);
 
 export default router;
