@@ -16,4 +16,25 @@ export default class CourseController {
       )
       .catch(next);
   }
+
+  // [GET]: /courses/create
+  create(req: Request, res: Response, next: NextFunction) {
+    res.render('courses/create');
+  }
+
+  // [POST]: /courses/create
+  store(req: Request, res: Response, next: NextFunction) {
+    const { name, description, level, videoId } = req.body;
+
+    Course.create({
+      name,
+      description,
+      level,
+      videoId,
+    })
+      .then((course) => {
+        res.redirect(`/courses/${course.slug}`);
+      })
+      .catch(next);
+  }
 }
