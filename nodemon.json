@@ -1,4 +1,4 @@
 {
   "ext": "js json hbs ts",
-  "exec": "ts-node src/index.ts"
+  "exec": "node src/index.js"
 }

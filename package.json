@@ -9,10 +9,11 @@
     "express-handlebars": "^5.3.4",
     "method-override": "^3.0.0",
     "mongoose": "^6.0.9",
+    "mongoose-delete": "^0.5.4",
     "mongoose-slug-generator": "^1.0.4"
   },
   "scripts": {
-    "start": "nodemon --inspect src/index.ts",
+    "start": "nodemon --inspect src/index.js",
     "css": "node-sass --watch src/resources/scss/ --output src/public/css/",
     "beautiful": "lint-staged",
     "prepare": "husky install",
@@ -23,6 +24,7 @@
     "@types/express": "^4.17.13",
     "@types/express-handlebars": "^5.3.1",
     "@types/method-override": "^0.0.32",
+    "@types/mongoose-delete": "^0.5.6",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.10.2",
     "husky": "^7.0.0",

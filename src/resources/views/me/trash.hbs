@@ -1,0 +1,94 @@
+<div class="mt-4">
+  <div>
+    <h3>My Trash Courses</h3>
+
+    <a href="/me/courses">Back</a>
+
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Level</th>
+        <th scope="col">Time</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each courses}}
+      <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.level}}</td>
+        <td>{{this.deletedAt}}</td>
+        <td>
+          <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Restore</a>
+          <a href="" class="btn btn-link" data-id="{{this._id}}" data-title="{{this.name}}" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Remove forever</a>
+        </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          Empty list
+          <a href="/me/courses">Delete now :)</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="POST" id="course-form">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete forever?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure?
+          </div>
+          <div class="modal-footer">
+            <button id="submit-course-form" type="submit" class="btn btn-danger">Delete forever</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+  })
+
+  var exampleModal = document.getElementById('exampleModal');
+  var courseForm = document.getElementById('course-form');
+  var restoreBtnAll = document.querySelectorAll('.btn-restore');
+
+  exampleModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget;
+    var title = button.getAttribute('data-title');
+    var courseId = button.getAttribute('data-id');
+    var modalTitle = exampleModal.querySelector('.modal-title');
+
+    modalTitle.textContent = `Do you want to delete "${title}" forever?`;
+
+    courseForm.action = `/courses/${courseId}/force?_method=DELETE`;
+  });
+
+  restoreBtnAll.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      var courseId = btn.getAttribute('data-id');
+      courseForm.action = `/courses/${courseId}/restore?_method=PATCH`;
+      courseForm.submit();
+    })
+  })
+
+</script>

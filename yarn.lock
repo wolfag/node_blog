@@ -130,6 +130,13 @@
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.2.tgz"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
+"@types/mongoose-delete@^0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@types/mongoose-delete/-/mongoose-delete-0.5.6.tgz#033d5253bc953e4735ddd834b0b4c6710d3863c1"
+  integrity sha512-2j88YNtyhZcK31+5yUjpx9KU7wMpNkZTorYaKfYEStNeDGa77iEEdUE+PK3c2y8kyIi650Qb1TuZ7ioQYcKQIQ==
+  dependencies:
+    mongoose "^5.11 || ^6"
+
 "@types/morgan@^1.9.3":
   version "1.9.3"
   resolved "https://registry.npmjs.org/@types/morgan/-/morgan-1.9.3.tgz"
@@ -1870,6 +1877,11 @@ mongodb@4.1.2:
   optionalDependencies:
     saslprep "^1.0.3"
 
+mongoose-delete@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/mongoose-delete/-/mongoose-delete-0.5.4.tgz#588374bf144cbffa209a549f247e5482054715f2"
+  integrity sha512-zKkcWFEwTneVG4Oiy+qJRJPFCiGlqOJToHeU3a3meJybWsHCnWxdHkGEkFWNY5cmYEv5av3WwByOhPlQ6I+FmQ==
+
 mongoose-slug-generator@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mongoose-slug-generator/-/mongoose-slug-generator-1.0.4.tgz#a5364f2d4203783472c235c302d35aa1b20d53eb"
@@ -1878,6 +1890,21 @@ mongoose-slug-generator@^1.0.4:
     async "^1.5.0"
     shortid "^2.2.4"
     speakingurl "^7.0.0"
+
+"mongoose@^5.11 || ^6":
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.0.10.tgz#c22ac914afccf648778edfe11954f4aa0425a105"
+  integrity sha512-p/wiEDUXoQuyb/xQx8QW/YGN92ZsojJ5E/DDgMCUU0WOGxc5uhcWoZ7ijLu6Ssjq8UkwVSv+jzkYp4Wbr+NqBg==
+  dependencies:
+    bson "^4.2.2"
+    kareem "2.3.2"
+    mongodb "4.1.2"
+    mpath "0.8.4"
+    mquery "4.0.0"
+    ms "2.1.2"
+    regexp-clone "1.0.0"
+    sift "13.5.2"
+    sliced "1.0.1"
 
 mongoose@^6.0.9:
   version "6.0.9"
