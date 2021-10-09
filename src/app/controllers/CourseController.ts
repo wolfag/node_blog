@@ -37,4 +37,46 @@ export default class CourseController {
       })
       .catch(next);
   }
+
+  edit(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+
+    Course.findOne({ _id: id })
+      .then((course) =>
+        res.render('courses/edit', { course: mongooseToObject(course!) }),
+      )
+      .catch(next);
+  }
+
+  // [PUT]: /courses/:id
+  update(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    const { name, description, level, videoId } = req.body;
+
+    Course.updateOne(
+      { _id: id },
+      {
+        name,
+        description,
+        level,
+        videoId,
+      },
+    )
+      .then(() => {
+        res.redirect(`/me/courses`);
+      })
+      .catch(next);
+  }
+
+  // [DELETE]: /course/:id
+  delete(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+
+    Course.deleteOne({ _id: id })
+      .then(() => {
+        res.redirect(`back`);
+        // res.redirect(`/me/courses`);
+      })
+      .catch(next);
+  }
 }

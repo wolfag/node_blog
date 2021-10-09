@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import path from 'path';
 import { connect } from './config/db';
 import router from './routes';
+import methodOverride from 'method-override';
 
 dotenv.config();
 
@@ -27,7 +28,17 @@ app.use(express.json());
 
 app.use(morgan('combined'));
 
-app.engine('hbs', handlebars({ extname: '.hbs' }));
+app.use(methodOverride('_method'));
+
+app.engine(
+  'hbs',
+  handlebars({
+    extname: '.hbs',
+    helpers: {
+      sum: (a: number, b: number) => a + b,
+    },
+  }),
+);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
